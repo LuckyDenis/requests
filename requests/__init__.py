@@ -16,7 +16,7 @@ usage:
    >>> r = requests.get('https://www.python.org')
    >>> r.status_code
    200
-   >>> 'Python is a programming language' in r.content
+   >>> b'Python is a programming language' in r.content
    True
 
 ... or POST:
@@ -24,11 +24,13 @@ usage:
    >>> payload = dict(key1='value1', key2='value2')
    >>> r = requests.post('https://httpbin.org/post', data=payload)
    >>> print(r.text)
+   ... # doctest: +ELLIPSIS
+   ... # doctest: +NORMALIZE_WHITESPACE
    {
-     ...
+   ...
      "form": {
-       "key2": "value2",
-       "key1": "value1"
+       "key1": "value1",
+       "key2": "value2"
      },
      ...
    }
